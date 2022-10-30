@@ -15,6 +15,11 @@ services:
       - postgres
     ports:
       - 3000:3000
+    labels:
+      - traefik.http.routers.blog.rule=Host(`openbuvette.gouze.me`)
+      - traefik.http.routers.blog.tls=true
+      - traefik.http.routers.blog.tls.certresolver=lets-encrypt
+      - traefik.port=3000
 
   postgres:
     image: postgres
